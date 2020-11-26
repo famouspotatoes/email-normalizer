@@ -1,0 +1,33 @@
+# Node Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Node Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Node Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# Unwanted Mac OS files
+.DS_Store
+__MACOS/
+.__MACOS/
+
+# Distribution file
+App.zip
+
+# Build directory
+dist/
+
+# IDEs
+.idea/

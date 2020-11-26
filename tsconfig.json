@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "es2020",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "target": "es2020",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "baseUrl": "src",
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths"
+      },
+      {
+        "transform": "@zoltu/typescript-transformer-append-js-extension/output/index.js",
+        "after": true
+      }
+    ],
+    "paths": { "*": ["*"] }
+  },
+  "lib": ["es2020"],
+  "compileOnSave": true,
+  "include": [
+    "src"
+  ]
+}
