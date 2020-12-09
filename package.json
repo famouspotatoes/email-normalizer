@@ -42,7 +42,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --cache --fix",
+      "node --experimental-vm-modules node_modules/.bin/eslint --cache --fix",
       "prettier --write"
     ]
   }

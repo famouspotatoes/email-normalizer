@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   parser: "@typescript-eslint/parser",
   plugins: [
@@ -6,7 +6,7 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: module, // Allows for the use of imports
+    sourceType: "module", // Allows for the use of imports
   },
   extends: [
     "airbnb-base", // Uses airbnb's recommended rules
