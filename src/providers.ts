@@ -20,6 +20,24 @@
  * whatever@realemail.domain.com => realemail@domain.com
  */
 
+/**
+ * SOURCES:
+ *
+ *
+ * https://www.spamresource.com/2018/07/reference-omg-domains-list-oath.html
+ *
+ */
+
+import appleDomains from 'domains/apple'
+import fastmailDomains from 'domains/fastmail'
+import googleDomains from 'domains/google'
+import microsoftDomains from 'domains/microsoft'
+import protonmailDomains from 'domains/protonmail'
+import rackspaceDomains from 'domains/rackspace'
+import verizonDomains from 'domains/verizon'
+import yandexDomains from 'domains/yandex'
+import zohoDomains from 'domains/zoho'
+
 export interface providerDetails {
     plusAddressing: boolean,
     hyphenAddressing: boolean
@@ -34,134 +52,63 @@ const providers: Record<string, providerDetails> = {
         hyphenAddressing: false,
         periodAliasing: true,
         userAsSubdomain: false,
-        domains: [
-            'gmail.com',
-            'google.com',
-            'googlemail.com',
-        ],
+        domains: googleDomains,
     },
     microsoft: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'outlook.com',
-            'hotmail.com',
-            'live.com',
-        ],
+        domains: microsoftDomains,
     },
-    yahoo: {
+    verizon: {
         plusAddressing: false,
         hyphenAddressing: true,
         periodAliasing: true,
         userAsSubdomain: false,
-        domains: [
-            'yahoo.com',
-            'yahoo.com.ar',
-            'yahoo.com.au',
-            'yahoo.at',
-            'yahoo.be/fr',
-            'yahoo.be/nl',
-            'yahoo.com.br',
-            'ca.yahoo.com',
-            'qc.yahoo.com',
-            'yahoo.com.co',
-            'yahoo.com.hr',
-            'yahoo.cz',
-            'yahoo.dk',
-            'yahoo.fi',
-            'yahoo.fr',
-            'yahoo.de',
-            'yahoo.gr',
-            'yahoo.com.hk',
-            'yahoo.hu',
-            'yahoo.co.in/yahoo.in',
-            'yahoo.co.id',
-            'yahoo.ie',
-            'yahoo.co.il',
-            'yahoo.it',
-            'yahoo.co.jp',
-            'yahoo.com.my',
-            'yahoo.com.mx',
-            'yahoo.ae',
-            'yahoo.nl',
-            'yahoo.co.nz',
-            'yahoo.no',
-            'yahoo.com.ph',
-            'yahoo.pl',
-            'yahoo.pt',
-            'yahoo.ro',
-            'yahoo.ru',
-            'yahoo.com.sg',
-            'yahoo.co.za',
-            'yahoo.es',
-            'yahoo.se',
-            'yahoo.ch/fr',
-            'yahoo.ch/de',
-            'yahoo.com.tw',
-            'yahoo.co.th',
-            'yahoo.com.tr',
-            'yahoo.co.uk',
-            'yahoo.com.vn',
-        ],
+        domains: verizonDomains,
     },
     apple: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'icloud.com',
-        ],
+        domains: appleDomains,
     },
-    prontonmail: {
+    protonmail: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'protonmail.ch',
-        ],
+        domains: protonmailDomains,
     },
     rackspace: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'emailsrvr.com',
-        ],
+        domains: rackspaceDomains,
     },
     yandex: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'mx.yandex.net',
-            'yandex.ru',
-        ],
+        domains: yandexDomains,
     },
     zoho: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: [
-            'zoho.com',
-        ],
+        domains: zohoDomains,
     },
     fastmail: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: true,
-        domains: [
-            'fastmail.com',
-            'fastmail.fm',
-            'messagingengine.com',
-        ],
+        domains: fastmailDomains,
     },
 }
 
