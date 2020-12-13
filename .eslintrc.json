@@ -13,27 +13,27 @@
     "sourceType": "module"
   },
   "extends": [
-//    "prettier",
-//    "airbnb-base",
-//    "plugin:@typescript-eslint/recommended",
-//    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-//    "prettier/@typescript-eslint",
-//    "plugin:prettier/recommended"
+    "prettier",
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
   "rules": {
-//    "prettier/prettier": "error",
-//    "@typescript-eslint/ban-ts-comment": "off",
-//    "import/extensions": [
-//      "error",
-//      "ignorePackages",
-//      {
-//        "js": "never",
-//        "jsx": "never",
-//        "ts": "never",
-//        "tsx": "never"
-//      }
-//    ],
-    "prefer-const": ["warn", {
+    "prettier/prettier": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "prefer-const": ["error", {
       "destructuring": "any" //sf
     }]
   },
