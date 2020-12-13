@@ -24,22 +24,22 @@ const normalize = (
 
 	// Test email syntax
 	if (!Joi.string().email().validate(cleanEmail))
-		throw new Error(cleanEmail + ' is not a valid email')
+		throw new Error(`${cleanEmail} is not a valid email`)
 
-	// Destructure email string into user and domain
+	// Destructure email string into user and domain.
 	let [user, fullDomain]: string[] = cleanEmail.split(/@/)
 
 	// Parse domain to identify provider
-	// @ts-ignore (there seems to be a problem with parseDomain types)
-	const {subDomains, domain, topLevelDomains, type}: ParseResult = parseDomain(
-		fullDomain
-	)
+	const parseResult: ParseResult = parseDomain(fullDomain)
 
 	// Handle no-match for domain
-	if (type !== ParseResultType.Listed) return cleanEmail
+	if (parseResult.type !== ParseResultType.Listed) return cleanEmail
 
-	// Reconstruct root domain
-	let originalRootDomain: string = domain + '.' + topLevelDomains.join('.')
+	// Now we can destructure since we know the type is Listed
+	const {subDomains, domain, topLevelDomains} = parseResult
+
+	// Reconstruct root domain (domain has type string | undefined, but we already checked that its valid)
+	let originalRootDomain = `${domain as string}.${topLevelDomains.join('.')}`
 
 	// Get provider details
 	const provider = Object.values(providers).find((details: providerDetails) => {
@@ -49,7 +49,7 @@ const normalize = (
 	// Handle no provider match for domain
 	if (!provider) {
 		if (options.detectProvider) {
-			// handle DNS lookup
+			// TODO: handle DNS lookup here
 			throw new Error('No DNS lookup has been built yet.')
 		} else {
 			return cleanEmail
@@ -70,11 +70,11 @@ const normalize = (
 		// that means the subdomain certainly is the username.
 		// Don't keep the subdomain in the domain, but instead
 		// use it as the username
-		user = subDomains[0]
+		;[user] = subDomains // username is first and only subdomain value
 	} else if (subDomains.length) {
 		// If username is not in subdomain, but a subdomain exists,
 		// keep subdomain for the normalized email
-		originalRootDomain = subDomains.join('.') + '.' + originalRootDomain
+		originalRootDomain = `${subDomains.join('.')}.${originalRootDomain}`
 	}
 
 	// Remove periods
@@ -84,16 +84,16 @@ const normalize = (
 
 	// Strip hyphen addressing
 	if (hyphenAddressing) {
-		user = user.split('-')[0]
+		;[user] = user.split('-') // user is value before -
 	}
 
 	// Strip plus addressing
 	if (plusAddressing) {
-		user = user.split('+')[0]
+		;[user] = user.split('+') // user is value before +
 	}
 
 	// Reconstruct email
-	return user + '@' + originalRootDomain
+	return `${user}@${originalRootDomain}`
 }
 
 export default normalize

@@ -1,3 +1,7 @@
+// We are using .eslintrc.json instead of .eslintrc.js
+// because eslint is not currently compatible with module
+// syntax for .eslintrc* and .cjs does not work
+
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -21,8 +25,11 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+
+    // Throw errors for un-prettified files
     "prettier/prettier": "error",
-    "@typescript-eslint/ban-ts-comment": "off",
+
+    // Don't require file extensions for JS-related files. They are auto-handled.
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -33,8 +40,11 @@
         "tsx": "never"
       }
     ],
+
+    // We should be able to use `let` in a destructure
+    // even if one destructured value is not reassigned
     "prefer-const": ["error", {
-      "destructuring": "all" //sf
+      "destructuring": "all"
     }]
   },
   "settings": {
