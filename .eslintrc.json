@@ -34,7 +34,7 @@
       }
     ],
     "prefer-const": ["error", {
-      "destructuring": "any" //sf
+      "destructuring": "all" //sf
     }]
   },
   "settings": {
