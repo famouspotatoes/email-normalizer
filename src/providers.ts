@@ -20,14 +20,6 @@
  * whatever@realemail.domain.com => realemail@domain.com
  */
 
-/**
- * SOURCES:
- *
- *
- * https://www.spamresource.com/2018/07/reference-omg-domains-list-oath.html
- *
- */
-
 import appleDomains from 'domains/apple'
 import fastmailDomains from 'domains/fastmail'
 import googleDomains from 'domains/google'
@@ -39,77 +31,77 @@ import yandexDomains from 'domains/yandex'
 import zohoDomains from 'domains/zoho'
 
 export interface providerDetails {
-    plusAddressing: boolean,
-    hyphenAddressing: boolean
-    periodAliasing: boolean,
-    userAsSubdomain: boolean,
-    domains: string[],
+	plusAddressing: boolean
+	hyphenAddressing: boolean
+	periodAliasing: boolean
+	userAsSubdomain: boolean
+	domains: string[]
 }
 
 const providers: Record<string, providerDetails> = {
-    google: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: true,
-        userAsSubdomain: false,
-        domains: googleDomains,
-    },
-    microsoft: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: microsoftDomains,
-    },
-    verizon: {
-        plusAddressing: false,
-        hyphenAddressing: true,
-        periodAliasing: true,
-        userAsSubdomain: false,
-        domains: verizonDomains,
-    },
-    apple: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: appleDomains,
-    },
-    protonmail: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: protonmailDomains,
-    },
-    rackspace: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: rackspaceDomains,
-    },
-    yandex: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: yandexDomains,
-    },
-    zoho: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: false,
-        domains: zohoDomains,
-    },
-    fastmail: {
-        plusAddressing: true,
-        hyphenAddressing: false,
-        periodAliasing: false,
-        userAsSubdomain: true,
-        domains: fastmailDomains,
-    },
+	google: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: true,
+		userAsSubdomain: false,
+		domains: googleDomains,
+	},
+	microsoft: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: microsoftDomains,
+	},
+	verizon: {
+		plusAddressing: false,
+		hyphenAddressing: true,
+		periodAliasing: true,
+		userAsSubdomain: false,
+		domains: verizonDomains,
+	},
+	apple: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: appleDomains,
+	},
+	protonmail: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: protonmailDomains,
+	},
+	rackspace: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: rackspaceDomains,
+	},
+	yandex: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: yandexDomains,
+	},
+	zoho: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: false,
+		domains: zohoDomains,
+	},
+	fastmail: {
+		plusAddressing: true,
+		hyphenAddressing: false,
+		periodAliasing: false,
+		userAsSubdomain: true,
+		domains: fastmailDomains,
+	},
 }
 
 export default providers

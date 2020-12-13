@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import",
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "extends": [
+//    "prettier",
+//    "airbnb-base",
+//    "plugin:@typescript-eslint/recommended",
+//    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+//    "prettier/@typescript-eslint",
+//    "plugin:prettier/recommended"
+  ],
+  "rules": {
+//    "prettier/prettier": "error",
+//    "@typescript-eslint/ban-ts-comment": "off",
+//    "import/extensions": [
+//      "error",
+//      "ignorePackages",
+//      {
+//        "js": "never",
+//        "jsx": "never",
+//        "ts": "never",
+//        "tsx": "never"
+//      }
+//    ],
+    "prefer-const": ["warn", {
+      "destructuring": "any" //sf
+    }]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}

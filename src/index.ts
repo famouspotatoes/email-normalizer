@@ -1,5 +1,5 @@
 import Joi from 'joi'
-import {parseDomain, ParseResultType} from 'parse-domain'
+import {parseDomain, ParseResultType, ParseResult} from 'parse-domain'
 import providers, {providerDetails} from './providers'
 
 /**
@@ -20,34 +20,34 @@ const normalize = (
 	options: {[x: string]: boolean} = {}
 ): string => {
 	// Clean email
-	let cleanEmail = email.trim().toLowerCase()
+	const cleanEmail = email.trim().toLowerCase()
 
 	// Test email syntax
 	if (!Joi.string().email().validate(cleanEmail))
 		throw new Error(cleanEmail + ' is not a valid email')
 
 	// Destructure email string into user and domain
-	let [user, fullDomain] = cleanEmail.split(/@/)
+	let [user, fullDomain]: string[] = cleanEmail.split(/@/)
 
 	// Parse domain to identify provider
 	// @ts-ignore (there seems to be a problem with parseDomain types)
-	const {subDomains, domain, topLevelDomains, type} = parseDomain(fullDomain)
+	const {subDomains, domain, topLevelDomains, type}: ParseResult = parseDomain(
+		fullDomain
+	)
 
 	// Handle no-match for domain
 	if (type !== ParseResultType.Listed) return cleanEmail
 
 	// Reconstruct root domain
-	let originalRootDomain = domain + '.' + topLevelDomains.join('.')
+	let originalRootDomain: string = domain + '.' + topLevelDomains.join('.')
 
 	// Get provider details
-	const providerDetails = Object.values(providers).find(
-		(providerDetails: providerDetails) => {
-			return providerDetails.domains.includes(originalRootDomain)
-		}
-	)
+	const provider = Object.values(providers).find((details: providerDetails) => {
+		return details.domains.includes(originalRootDomain)
+	})
 
 	// Handle no provider match for domain
-	if (!providerDetails) {
+	if (!provider) {
 		if (options.detectProvider) {
 			// handle DNS lookup
 			throw new Error('No DNS lookup has been built yet.')
@@ -56,8 +56,16 @@ const normalize = (
 		}
 	}
 
+	// Destructure provider
+	const {
+		userAsSubdomain,
+		periodAliasing,
+		hyphenAddressing,
+		plusAddressing,
+	} = provider
+
 	// Handle username in subdomain
-	if (providerDetails.userAsSubdomain && subDomains.length === 1) {
+	if (userAsSubdomain && subDomains.length === 1) {
 		// If username can be in subdomain and 1 subdomain exists,
 		// that means the subdomain certainly is the username.
 		// Don't keep the subdomain in the domain, but instead
@@ -70,21 +78,21 @@ const normalize = (
 	}
 
 	// Remove periods
-	if (providerDetails.periodAliasing) {
+	if (periodAliasing) {
 		user = user.replace('.', '')
 	}
 
 	// Strip hyphen addressing
-	if (providerDetails.hyphenAddressing) {
+	if (hyphenAddressing) {
 		user = user.split('-')[0]
 	}
 
 	// Strip plus addressing
-	if (providerDetails.plusAddressing) {
+	if (plusAddressing) {
 		user = user.split('+')[0]
 	}
 
-	// Reconstruct email string
+	// Reconstruct email
 	return user + '@' + originalRootDomain
 }
 
