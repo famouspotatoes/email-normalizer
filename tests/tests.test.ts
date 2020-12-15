@@ -1,6 +1,6 @@
-import normalize from '../dist/index.js'
+import normalize from '../src/index'
 
-const testGroups = {
+const testGroups: {[x: string]: {[x: string]: string}} = {
     'gmail': {
         'some.thing@gmail.com': 'something@gmail.com',
         'anything@realemail.gmail.com': 'anything@realemail.gmail.com',

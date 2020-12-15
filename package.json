@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test-changed": "node --experimental-vm-modules node_modules/.bin/jest --onlyChanged",
     "build": "ttsc",
     "dev": "ttsc -w",
     "lint": "eslint . --ext .ts"
