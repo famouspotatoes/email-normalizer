@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "joi": "^17.3.0",
-    "parse-domain": "^3.0.3"
+    "parse-domain": "^3.0.3",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@types/jest": "^26.0.18",

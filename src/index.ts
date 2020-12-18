@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import yup from 'yup'
 import {parseDomain, ParseResultType, ParseResult} from 'parse-domain'
 import providers, {providerDetails} from './providers'
 
@@ -23,7 +23,7 @@ const normalize = (
 	const cleanEmail = email.trim().toLowerCase()
 
 	// Test email syntax
-	if (!Joi.string().email().validate(cleanEmail))
+	if (!yup.string().email().validate(cleanEmail))
 		throw new Error(`${cleanEmail} is not a valid email`)
 
 	// Destructure email string into user and domain.
