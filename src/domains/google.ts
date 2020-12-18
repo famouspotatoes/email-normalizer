@@ -6,9 +6,6 @@
  *
  */
 
-const googleDomains: string[] = [
-    'gmail.com',
-    'googlemail.com',
-]
+const googleDomains: string[] = ['gmail.com', 'googlemail.com']
 
 export default googleDomains

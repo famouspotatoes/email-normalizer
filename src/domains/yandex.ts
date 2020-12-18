@@ -3,9 +3,6 @@
  *
  */
 
-const yandexDomains: string[] = [
-    'yandex.net',
-    'yandex.ru',
-]
+const yandexDomains: string[] = ['yandex.net', 'yandex.ru']
 
 export default yandexDomains

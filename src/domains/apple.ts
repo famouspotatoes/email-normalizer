@@ -5,10 +5,6 @@
  * https://support.apple.com/en-us/HT201771
  */
 
-const appleDomains: string[] = [
-    'icloud.com',
-    'me.com',
-    'mac.com',
-]
+const appleDomains: string[] = ['icloud.com', 'me.com', 'mac.com']
 
 export default appleDomains

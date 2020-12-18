@@ -3,8 +3,6 @@
  *
  */
 
-const rackspaceDomains: string[] = [
-    'emailsrvr.com',
-]
+const rackspaceDomains: string[] = ['emailsrvr.com']
 
 export default rackspaceDomains

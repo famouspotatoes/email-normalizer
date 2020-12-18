@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
-    "test-changed": "node --experimental-vm-modules node_modules/.bin/jest --onlyChanged",
+    "test-changed": "node --experimental-vm-modules node_modules/.bin/jest --onlyChanged --findRelatedTests",
     "build": "ttsc",
     "dev": "ttsc -w",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts --cache --fix"
   },
   "dependencies": {
     "joi": "^17.3.0",
@@ -51,7 +51,8 @@
   "lint-staged": {
     "*.ts": [
       "eslint --cache --fix",
-      "prettier --write"
+      "prettier --write",
+      "npm run test-changed"
     ]
   }
 }

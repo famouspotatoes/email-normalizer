@@ -3,8 +3,6 @@
  *
  */
 
-const zohoDomains: string[] = [
-    'zoho.com',
-]
+const zohoDomains: string[] = ['zoho.com']
 
 export default zohoDomains
