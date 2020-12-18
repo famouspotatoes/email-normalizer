@@ -19,7 +19,7 @@ const normalize = (
 	email: string,
 	options: {[x: string]: boolean} = {}
 ): string => {
-	// Clean email
+	// Clean email.
 	const cleanEmail = email.trim().toLowerCase()
 
 	// Test email syntax
