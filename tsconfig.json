@@ -13,6 +13,13 @@
     "declaration": true,
     "declarationMap": true,
     "baseUrl": "src",
+
+    // For Yup, see: https://github.com/jquense/yup/blob/master/docs/typescript.md#typescript-settings
+    // If they change their docs, reference the above doc in this commit hash: 7f8591da
+    "strictFunctionTypes": false,
+    "strictNullChecks": true,
+
+
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths"

@@ -1,4 +1,4 @@
-import yup from 'yup'
+import * as yup from 'yup'
 import {parseDomain, ParseResultType, ParseResult} from 'parse-domain'
 import providers, {providerDetails} from './providers'
 
@@ -23,8 +23,8 @@ const normalize = (
 	const cleanEmail = email.trim().toLowerCase()
 
 	// Test email syntax
-	if (!yup.string().email().validate(cleanEmail))
-		throw new Error(`${cleanEmail} is not a valid email`)
+	if (!yup.string().email().isValidSync(cleanEmail))
+		throw new Error(`${cleanEmail as string} is not a valid email`)
 
 	// Destructure email string into user and domain.
 	let [user, fullDomain]: string[] = cleanEmail.split(/@/)
