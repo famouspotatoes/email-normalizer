@@ -19,7 +19,6 @@
     "strictFunctionTypes": false,
     "strictNullChecks": true,
 
-
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths"
