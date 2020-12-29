@@ -34,3 +34,6 @@ dist/
 
 # ESlint cache
 .eslintcache
+
+# Docs - these should be generated
+docs/
