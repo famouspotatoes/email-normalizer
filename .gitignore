@@ -26,9 +26,6 @@ __MACOS/
 # Distribution file
 App.zip
 
-# Build directory
-dist/
-
 # IDEs
 .idea/
 
