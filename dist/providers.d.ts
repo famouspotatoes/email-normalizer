@@ -20,12 +20,12 @@
  * whatever@realemail.domain.com => realemail@domain.com
  */
 export interface providerDetails {
-	plusAddressing: boolean
-	hyphenAddressing: boolean
-	periodAliasing: boolean
-	userAsSubdomain: boolean
-	domains: string[]
+    plusAddressing: boolean;
+    hyphenAddressing: boolean;
+    periodAliasing: boolean;
+    userAsSubdomain: boolean;
+    domains: string[];
 }
-declare const providers: Record<string, providerDetails>
-export default providers
+declare const providers: Record<string, providerDetails>;
+export default providers;
 //# sourceMappingURL=providers.d.ts.map

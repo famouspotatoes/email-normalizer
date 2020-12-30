@@ -49,7 +49,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
+    "src/**/*.ts": [
       "eslint --cache --fix",
       "prettier --write",
       "npm run test-changed"

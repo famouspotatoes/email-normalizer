@@ -3,6 +3,7 @@ import normalize from '../src/index'
 const testGroups: {[x: string]: {[x: string]: string}} = {
 	gmail: {
 		'some.thing@gmail.com': 'something@gmail.com',
+		's.ome.th.in.g@gmail.com': 'something@gmail.com',
 		'anything@realemail.gmail.com': 'anything@realemail.gmail.com',
 	},
 	microsoft: {

@@ -4,6 +4,6 @@
  * Sources:
  * https://protonmail.com/support/knowledge-base/pm-me-addresses/
  */
-declare const protonmailDomains: string[]
-export default protonmailDomains
+declare const protonmailDomains: string[];
+export default protonmailDomains;
 //# sourceMappingURL=protonmail.d.ts.map

@@ -4,6 +4,6 @@
  * Sources:
  * https://www.fastmail.com/about/ourdomains/
  */
-declare const fastmailDomains: string[]
-export default fastmailDomains
+declare const fastmailDomains: string[];
+export default fastmailDomains;
 //# sourceMappingURL=fastmail.d.ts.map

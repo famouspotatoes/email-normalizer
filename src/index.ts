@@ -15,10 +15,7 @@ import providers, {providerDetails} from './providers'
  *        dont have to fetch them again.
  * @returns {string}
  */
-const normalize = (
-	email: string,
-	options: {[x: string]: boolean} = {}
-): string => {
+const normalize = (email: string, options: {[x: string]: boolean} = {}): string => {
 	// Clean email.
 	const cleanEmail = email.trim().toLowerCase()
 
@@ -57,12 +54,7 @@ const normalize = (
 	}
 
 	// Destructure provider
-	const {
-		userAsSubdomain,
-		periodAliasing,
-		hyphenAddressing,
-		plusAddressing,
-	} = provider
+	const {userAsSubdomain, periodAliasing, hyphenAddressing, plusAddressing} = provider
 
 	// Handle username in subdomain
 	if (userAsSubdomain && subDomains.length === 1) {
@@ -77,9 +69,9 @@ const normalize = (
 		originalRootDomain = `${subDomains.join('.')}.${originalRootDomain}`
 	}
 
-	// Remove periods
+	// Remove periods (must use global regex to get all periods)
 	if (periodAliasing) {
-		user = user.replace('.', '')
+		user = user.replace(/\./g, '')
 	}
 
 	// Strip hyphen addressing

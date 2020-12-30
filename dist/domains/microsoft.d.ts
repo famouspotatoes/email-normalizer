@@ -5,6 +5,6 @@
  * https://www.spamresource.com/2018/07/reference-omg-domains-list-oath.html
  *
  */
-declare const microsoftDomains: string[]
-export default microsoftDomains
+declare const microsoftDomains: string[];
+export default microsoftDomains;
 //# sourceMappingURL=microsoft.d.ts.map

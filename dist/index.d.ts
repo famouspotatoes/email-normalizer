@@ -11,11 +11,8 @@
  *        dont have to fetch them again.
  * @returns {string}
  */
-declare const normalize: (
-	email: string,
-	options?: {
-		[x: string]: boolean
-	},
-) => string
-export default normalize
+declare const normalize: (email: string, options?: {
+    [x: string]: boolean;
+}) => string;
+export default normalize;
 //# sourceMappingURL=index.d.ts.map

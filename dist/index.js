@@ -46,7 +46,7 @@ const normalize = (email, options = {}) => {
         }
     }
     // Destructure provider
-    const { userAsSubdomain, periodAliasing, hyphenAddressing, plusAddressing, } = provider;
+    const { userAsSubdomain, periodAliasing, hyphenAddressing, plusAddressing } = provider;
     // Handle username in subdomain
     if (userAsSubdomain && subDomains.length === 1) {
         // If username can be in subdomain and 1 subdomain exists,
@@ -61,9 +61,9 @@ const normalize = (email, options = {}) => {
         // keep subdomain for the normalized email
         originalRootDomain = `${subDomains.join('.')}.${originalRootDomain}`;
     }
-    // Remove periods
+    // Remove periods (must use global regex to get all periods)
     if (periodAliasing) {
-        user = user.replace('.', '');
+        user = user.replace(/\./g, '');
     }
     // Strip hyphen addressing
     if (hyphenAddressing) {

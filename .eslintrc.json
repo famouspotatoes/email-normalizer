@@ -28,6 +28,9 @@
     // Throw errors for un-prettified files
     "prettier/prettier": "error",
 
+    // Allow console logging
+    "no-console": "off",
+
     // Don't require file extensions for JS-related files. They are auto-handled.
     "import/extensions": [
       "error",
