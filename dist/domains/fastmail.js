@@ -1,9 +1,11 @@
+"use strict";
 /**
  * Includes all known commercial Fastmail email domains
  *
  * Sources:
  * https://www.fastmail.com/about/ourdomains/
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 const fastmailDomains = [
     '123mail.org',
     '150mail.com',
@@ -123,5 +125,5 @@ const fastmailDomains = [
     'yepmail.net',
     'your-mail.com',
 ];
-export default fastmailDomains;
+exports.default = fastmailDomains;
 //# sourceMappingURL=fastmail.js.map

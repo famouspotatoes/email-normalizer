@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Includes all known commercial Microsoft email domains
  *
@@ -5,6 +6,7 @@
  * https://www.spamresource.com/2018/07/reference-omg-domains-list-oath.html
  *
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 const microsoftDomains = [
     'hotmail.ac',
     'hotmail.as',
@@ -180,5 +182,5 @@ const microsoftDomains = [
     'outlook.uy',
     'webtv.net',
 ];
-export default microsoftDomains;
+exports.default = microsoftDomains;
 //# sourceMappingURL=microsoft.js.map

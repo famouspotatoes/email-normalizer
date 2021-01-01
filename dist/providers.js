@@ -1,3 +1,4 @@
+"use strict";
 /**
  * This const maps commercial domains to their mail providers
  * since the mail providers typically have the same mail
@@ -19,79 +20,83 @@
  * Addresses can be reorganized accordingly:
  * whatever@realemail.domain.com => realemail@domain.com
  */
-import appleDomains from "./domains/apple.js";
-import fastmailDomains from "./domains/fastmail.js";
-import googleDomains from "./domains/google.js";
-import microsoftDomains from "./domains/microsoft.js";
-import protonmailDomains from "./domains/protonmail.js";
-import rackspaceDomains from "./domains/rackspace.js";
-import verizonDomains from "./domains/verizon.js";
-import yandexDomains from "./domains/yandex.js";
-import zohoDomains from "./domains/zoho.js";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const apple_1 = __importDefault(require("./domains/apple"));
+const fastmail_1 = __importDefault(require("./domains/fastmail"));
+const google_1 = __importDefault(require("./domains/google"));
+const microsoft_1 = __importDefault(require("./domains/microsoft"));
+const protonmail_1 = __importDefault(require("./domains/protonmail"));
+const rackspace_1 = __importDefault(require("./domains/rackspace"));
+const verizon_1 = __importDefault(require("./domains/verizon"));
+const yandex_1 = __importDefault(require("./domains/yandex"));
+const zoho_1 = __importDefault(require("./domains/zoho"));
 const providers = {
     google: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: true,
         userAsSubdomain: false,
-        domains: googleDomains,
+        domains: google_1.default,
     },
     microsoft: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: microsoftDomains,
+        domains: microsoft_1.default,
     },
     verizon: {
         plusAddressing: false,
         hyphenAddressing: true,
         periodAliasing: true,
         userAsSubdomain: false,
-        domains: verizonDomains,
+        domains: verizon_1.default,
     },
     apple: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: appleDomains,
+        domains: apple_1.default,
     },
     protonmail: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: protonmailDomains,
+        domains: protonmail_1.default,
     },
     rackspace: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: rackspaceDomains,
+        domains: rackspace_1.default,
     },
     yandex: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: yandexDomains,
+        domains: yandex_1.default,
     },
     zoho: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: false,
-        domains: zohoDomains,
+        domains: zoho_1.default,
     },
     fastmail: {
         plusAddressing: true,
         hyphenAddressing: false,
         periodAliasing: false,
         userAsSubdomain: true,
-        domains: fastmailDomains,
+        domains: fastmail_1.default,
     },
 };
-export default providers;
+exports.default = providers;
 //# sourceMappingURL=providers.js.map

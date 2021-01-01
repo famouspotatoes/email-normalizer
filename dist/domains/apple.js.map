@@ -1,1 +1,1 @@
-{"version":3,"file":"apple.js","sourceRoot":"","sources":["../../src/domains/apple.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AAEH,MAAM,YAAY,GAAa,CAAC,YAAY,EAAE,QAAQ,EAAE,SAAS,CAAC,CAAA;AAElE,eAAe,YAAY,CAAA"}
+{"version":3,"file":"apple.js","sourceRoot":"","sources":["../../src/domains/apple.ts"],"names":[],"mappings":";AAAA;;;;;GAKG;;AAEH,MAAM,YAAY,GAAa,CAAC,YAAY,EAAE,QAAQ,EAAE,SAAS,CAAC,CAAA;AAElE,kBAAe,YAAY,CAAA"}

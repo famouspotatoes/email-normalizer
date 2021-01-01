@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Includes all known commercial Verizon email domains
  * Includes Verizon subsidiaries Yahoo, AOL, Compuserve, etc...
@@ -6,6 +7,7 @@
  * https://www.spamresource.com/2018/07/reference-omg-domains-list-oath.html
  *
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 const verizonDomains = [
     'aim.com',
     'ameritech.net',
@@ -149,5 +151,5 @@ const verizonDomains = [
     'ygm.com',
     'ymail.com',
 ];
-export default verizonDomains;
+exports.default = verizonDomains;
 //# sourceMappingURL=verizon.js.map

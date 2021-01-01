@@ -1,6 +1,30 @@
-import * as yup from 'yup';
-import { parseDomain, ParseResultType } from 'parse-domain';
-import providers from "./providers.js";
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const yup = __importStar(require("yup"));
+const parse_domain_1 = require("parse-domain");
+const providers_1 = __importDefault(require("./providers"));
 /**
  * Normalize an email address by removing the dots and address tag.
  *
@@ -23,16 +47,16 @@ const normalize = (email, options = {}) => {
     // Destructure email string into user and domain.
     let [user, fullDomain] = cleanEmail.split(/@/);
     // Parse domain to identify provider
-    const parseResult = parseDomain(fullDomain);
+    const parseResult = parse_domain_1.parseDomain(fullDomain);
     // Handle no-match for domain
-    if (parseResult.type !== ParseResultType.Listed)
+    if (parseResult.type !== parse_domain_1.ParseResultType.Listed)
         return cleanEmail;
     // Now we can destructure since we know the type is Listed
     const { subDomains, domain, topLevelDomains } = parseResult;
     // Reconstruct root domain (domain has type string | undefined, but we already checked that its valid)
     let originalRootDomain = `${domain}.${topLevelDomains.join('.')}`;
     // Get provider details
-    const provider = Object.values(providers).find((details) => {
+    const provider = Object.values(providers_1.default).find((details) => {
         return details.domains.includes(originalRootDomain);
     });
     // Handle no provider match for domain
@@ -78,5 +102,5 @@ const normalize = (email, options = {}) => {
     // Reconstruct email
     return `${user}@${originalRootDomain}`;
 };
-export default normalize;
+exports.default = normalize;
 //# sourceMappingURL=index.js.map
