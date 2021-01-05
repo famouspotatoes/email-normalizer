@@ -102,5 +102,8 @@ const normalize = (email, options = {}) => {
     // Reconstruct email
     return `${user}@${originalRootDomain}`;
 };
+// Use module.exports instead of export default so that typescript
+// compiles to `module.exports` instead of `exports.default`
+module.exports = normalize;
 exports.default = normalize;
 //# sourceMappingURL=index.js.map

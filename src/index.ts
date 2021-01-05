@@ -88,4 +88,6 @@ const normalize = (email: string, options: {[x: string]: boolean} = {}): string 
 	return `${user}@${originalRootDomain}`
 }
 
+// Use export default AND module.exports so it works with ES5- and ES6+
+module.exports = normalize
 export default normalize

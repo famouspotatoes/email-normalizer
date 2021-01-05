@@ -6,7 +6,7 @@
 // some difficulties with getting the path matching to work:
 // See: https://github.com/kulshekhar/ts-jest/issues/269#issuecomment-608245812
 
-export default {
+module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   modulePaths: ["<rootDir>/src/"],
