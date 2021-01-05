@@ -34,3 +34,6 @@ App.zip
 
 # Docs - these should be generated
 docs/
+
+# Dist
+dist/

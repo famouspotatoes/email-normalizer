@@ -9,7 +9,8 @@
     "test-changed": "node --experimental-vm-modules node_modules/.bin/jest --onlyChanged --findRelatedTests",
     "build": "ttsc",
     "dev": "ttsc -w",
-    "lint": "eslint . --ext .ts --cache --fix"
+    "lint": "eslint . --ext .ts --cache --fix",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "joi": "^17.3.0",
