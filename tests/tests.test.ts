@@ -1,4 +1,4 @@
-import normalize from '../src/index'
+import normalize from '../src/index';
 
 const testGroups: {[x: string]: {[x: string]: string}} = {
 	gmail: {
@@ -44,20 +44,20 @@ const testGroups: {[x: string]: {[x: string]: string}} = {
 		'something+else@test.com': 'something+else@test.com',
 		'anything@realemail.test.com': 'anything@realemail.test.com',
 	},
-}
+};
 
 // Test all groups
 Object.keys(testGroups).forEach((testGroupKey) => {
 	describe(`Running ${testGroupKey} tests`, () => {
 		// Get tests for the group
-		const testValues = testGroups[testGroupKey]
+		const testValues = testGroups[testGroupKey];
 
 		// Run all tests in group
 		Object.keys(testValues).forEach((testKey) => {
-			const testValue = testValues[testKey]
-			test(`testing ${testKey} => ${testValue}`, () => {
-				expect(normalize(testKey)).toBe(testValue)
-			})
-		})
-	})
-})
+			const testValue = testValues[testKey];
+			test(`testing ${testKey} => ${testValue}`, async () => {
+				expect(await normalize(testKey)).toBe(testValue);
+			});
+		});
+	});
+});

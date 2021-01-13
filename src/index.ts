@@ -1,6 +1,6 @@
-import * as yup from 'yup'
-import {parseDomain, ParseResultType, ParseResult} from 'parse-domain'
-import providers, {providerDetails} from './providers'
+import * as yup from 'yup';
+import {parseDomain, ParseResultType, ParseResult} from 'parse-domain';
+import providers, {providerDetails} from './providers';
 
 /**
  * Normalize an email address by removing the dots and address tag.
@@ -15,46 +15,46 @@ import providers, {providerDetails} from './providers'
  *        dont have to fetch them again.
  * @returns {string}
  */
-const normalize = (email: string, options: {[x: string]: boolean} = {}): string => {
+const normalize = async (email: string, options: {[x: string]: boolean} = {}): Promise<string> => {
 	// Clean email.
-	const cleanEmail = email.trim().toLowerCase()
+	const cleanEmail = email.trim().toLowerCase();
 
 	// Test email syntax
-	if (!yup.string().email().isValidSync(cleanEmail))
-		throw new Error(`${cleanEmail as string} is not a valid email`)
+	if (!(await yup.string().email().validate(cleanEmail)))
+		throw new Error(`${cleanEmail} is not a valid email`);
 
 	// Destructure email string into user and domain.
-	let [user, fullDomain]: string[] = cleanEmail.split(/@/)
+	let [user, fullDomain]: string[] = cleanEmail.split(/@/);
 
 	// Parse domain to identify provider
-	const parseResult: ParseResult = parseDomain(fullDomain)
+	const parseResult: ParseResult = parseDomain(fullDomain);
 
 	// Handle no-match for domain
-	if (parseResult.type !== ParseResultType.Listed) return cleanEmail
+	if (parseResult.type !== ParseResultType.Listed) return cleanEmail;
 
 	// Now we can destructure since we know the type is Listed
-	const {subDomains, domain, topLevelDomains} = parseResult
+	const {subDomains, domain, topLevelDomains} = parseResult;
 
 	// Reconstruct root domain (domain has type string | undefined, but we already checked that its valid)
-	let originalRootDomain = `${domain as string}.${topLevelDomains.join('.')}`
+	let originalRootDomain = `${domain as string}.${topLevelDomains.join('.')}`;
 
 	// Get provider details
 	const provider = Object.values(providers).find((details: providerDetails) => {
-		return details.domains.includes(originalRootDomain)
-	})
+		return details.domains.includes(originalRootDomain);
+	});
 
 	// Handle no provider match for domain
 	if (!provider) {
 		if (options.detectProvider) {
 			// TODO: handle DNS lookup here
-			throw new Error('No DNS lookup has been built yet.')
+			throw new Error('No DNS lookup has been built yet.');
 		} else {
-			return cleanEmail
+			return cleanEmail;
 		}
 	}
 
 	// Destructure provider
-	const {userAsSubdomain, periodAliasing, hyphenAddressing, plusAddressing} = provider
+	const {userAsSubdomain, periodAliasing, hyphenAddressing, plusAddressing} = provider;
 
 	// Handle username in subdomain
 	if (userAsSubdomain && subDomains.length === 1) {
@@ -62,32 +62,32 @@ const normalize = (email: string, options: {[x: string]: boolean} = {}): string 
 		// that means the subdomain certainly is the username.
 		// Don't keep the subdomain in the domain, but instead
 		// use it as the username
-		;[user] = subDomains // username is first and only subdomain value
+		[user] = subDomains; // username is first and only subdomain value
 	} else if (subDomains.length) {
 		// If username is not in subdomain, but a subdomain exists,
 		// keep subdomain for the normalized email
-		originalRootDomain = `${subDomains.join('.')}.${originalRootDomain}`
+		originalRootDomain = `${subDomains.join('.')}.${originalRootDomain}`;
 	}
 
 	// Remove periods (must use global regex to get all periods)
 	if (periodAliasing) {
-		user = user.replace(/\./g, '')
+		user = user.replace(/\./g, '');
 	}
 
 	// Strip hyphen addressing
 	if (hyphenAddressing) {
-		;[user] = user.split('-') // user is value before -
+		[user] = user.split('-'); // user is value before -
 	}
 
 	// Strip plus addressing
 	if (plusAddressing) {
-		;[user] = user.split('+') // user is value before +
+		[user] = user.split('+'); // user is value before +
 	}
 
 	// Reconstruct email
-	return `${user}@${originalRootDomain}`
-}
+	return `${user}@${originalRootDomain}`;
+};
 
 // Use export default AND module.exports so it works with ES5- and ES6+
-module.exports = normalize
-export default normalize
+module.exports = normalize;
+export default normalize;
