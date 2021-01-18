@@ -18,7 +18,7 @@
     "yup": "^0.32.8"
   },
   "engines": {
-    "node": ">=14.15.3"
+    "node": "^12.20.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.18",
